@@ -3,6 +3,8 @@ Planet myPlanet;
 Turret myTurret;
 Crosshair myCrosshair;
 Laser myLaser;
+EnemyShips myEnemyShips;
+boolean hit = false;
 
 
 void setup() {
@@ -13,6 +15,7 @@ void setup() {
   myPlanet = new Planet();
   myTurret = new Turret();
   myCrosshair = new Crosshair ();
+  myEnemyShips = new EnemyShips();
   
   
 }
@@ -23,8 +26,15 @@ void draw() {
   myStar.display();
   myPlanet.display();
   myTurret.display();
+  myEnemyShips.display();
+  myEnemyShips.move();
+  myEnemyShips.stopShip();
   myCrosshair.display();
+  myTurret.fulllife();
+  myEnemyShips.Lifeloose();
   
+// if (
+ 
  
 }
 
