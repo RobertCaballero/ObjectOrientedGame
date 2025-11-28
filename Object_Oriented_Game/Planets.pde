@@ -16,7 +16,7 @@ class Planet {
   void display () {
 
     image(Planet, 500, 200, 500, 500);
-    image (Planet2, 90, 650, 100, 100);
+    image (Planet2, 90, 550, 100, 100);
     //fill(121,7,7);
     // ellipse ( 800, 400, 400, 400);
     //fill(4,5,54);
