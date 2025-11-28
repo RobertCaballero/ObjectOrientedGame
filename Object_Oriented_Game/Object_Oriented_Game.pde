@@ -2,7 +2,6 @@ Star myStar;
 Planet myPlanet;
 Turret myTurret;
 Crosshair myCrosshair;
-Laser myLaser;
 EnemyShips myEnemyShips;
 boolean hit = false;
 
