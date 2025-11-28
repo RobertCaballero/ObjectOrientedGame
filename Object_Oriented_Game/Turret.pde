@@ -1,7 +1,22 @@
 class Turret {
 
+    PImage Heart;
+    PImage Heart2;
+    
+    
+    Turret () {
+      
+      Heart = loadImage("RedHeart.png");
+      Heart2 = loadImage ("BlackHeart.png");
+      
+      
+    }
+  
+  
+  
   void display () {
 
+   
 
     fill(50);
     quad(340, 750, 460, 750, 490, 800, 310, 800);
@@ -15,4 +30,36 @@ class Turret {
     rect(290, 700, 25, 100);
     rect(485, 700, 25, 100);
   }
+  
+  void fulllife () {
+    
+    image(Heart, 20, 720, 60, 50);
+    image(Heart, 90, 720, 60, 50);
+    image(Heart, 160, 720, 60, 50);
+    //image(Heart2, 150, 720, 70, 50);
+    
+    
+  }
+  
+  void loose1life () {
+    
+    
+    
+    
+  }
+  
+  void loose2life () {
+    
+    
+    
+    
+  }
+  
+  void died () {
+    
+    
+    
+    
+  }
+  
 }
