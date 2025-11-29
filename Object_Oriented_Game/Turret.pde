@@ -1,18 +1,7 @@
 class Turret {
 
-    PImage Heart;
-    PImage Heart2;
+   
     
-    
-    Turret () {
-      
-      Heart = loadImage("RedHeart.png");
-      Heart2 = loadImage ("BlackHeart.png");
-      
-      
-    }
-  
-  
   
   void display () {
 
@@ -33,9 +22,7 @@ class Turret {
   
   void fulllife () {
     
-    image(Heart, 20, 720, 60, 50);
-    image(Heart, 90, 720, 60, 50);
-    image(Heart, 160, 720, 60, 50);
+    
     //image(Heart2, 150, 720, 70, 50);
     
     
@@ -43,8 +30,9 @@ class Turret {
   
   void loose1life () {
     
-    
-    
+    image(Heart, 20, 720, 60, 50);
+    image(Heart, 90, 720, 60, 50);
+    image(Heart2, 150, 720, 70, 50);
     
   }
   
