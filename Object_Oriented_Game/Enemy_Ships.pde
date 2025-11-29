@@ -30,20 +30,13 @@ class EnemyShips {
   }
   
   void stopShip () {
-   if (position.y > 640) {
+   if (position.y > 550) {
     position.y = -100;
     position.x = random (100, 450);
      
    }
   }
    
-   void Lifeloose () {
-     
-     if (position.y > 600) {
-       
-       
-     }
-   }
     
   }
   
