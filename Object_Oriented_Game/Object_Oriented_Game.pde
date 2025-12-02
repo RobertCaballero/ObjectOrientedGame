@@ -10,14 +10,17 @@ boolean canLoseLife = true;
 boolean showLifes = false;
 boolean exploded = false;
 boolean gameOver = false; // New boolean to track whenever is a gameOver in the game.
+boolean gameWon = false;
 PImage Heart;
 PImage Heart2;
 PImage GameOver;
+PImage GameWon;
 int explosionTime = 0;
 
 void setup() {
   size (800, 800);
   background(255);
+  frameRate(60); //Added a limit on the framerate so it doesn't overload the CPU (my poor computer)
   noStroke();
 
   myStar = new Star();
@@ -28,9 +31,10 @@ void setup() {
   Heart = loadImage("RedHeart.png");
   Heart2 = loadImage ("BlackHeart.png");
   GameOver = loadImage ("GameOver.png");
+  GameWon = loadImage ("GameWon.png");
   particles = new ArrayList<Particles>();
 
-  for (int i = 0; i < 30; i++) {
+  for (int i = 0; i < 15; i++) {
     particles.add(new Particles());
   }
 }
@@ -46,14 +50,14 @@ void draw() {
   myEnemyShips.lifeBar();
 
 
-  if (!exploded && !gameOver) {
+  if (!exploded && !gameOver && !gameWon) {
     myEnemyShips.display();
     myEnemyShips.move();
     myEnemyShips.stopShip();
   }
 
 
-  if (myEnemyShips.position.y > 540 && canLoseLife) {
+  if (myEnemyShips.position.y > 530 && canLoseLife) {
     lives -=1;
     canLoseLife = false;
   }
@@ -85,7 +89,7 @@ void draw() {
     text("Press SPACE to restart", 300, 700);
   }
 
-  if (myEnemyShips.health <= 0 && !exploded && !gameOver)
+  if (myEnemyShips.health <= 0 && !exploded && !gameOver && !gameWon)
   {
     exploded = true;
     myEnemyShips.health2= 0; // When the ship is destroyed, the second health bar dissapears.
@@ -106,12 +110,23 @@ void draw() {
     explosionTime ++; // Explosion time will be 1 second
   }
 
+
   if (explosionTime > 40) {
     myEnemyShips.health = 150;
     myEnemyShips.position.y = -100;
     myEnemyShips.position.x = random (100, 450);
     explosionTime = 0;
     exploded = false;
+  }
+  
+  if ( score >= 20) {
+    gameWon = true;
+    fill (150);
+    rect (0,0,800,800);
+    image (GameWon, 100,200,600,200);
+    textSize(25);
+    fill(255, 226, 0);
+    text("Press SPACE to restart", 280, 700);
   }
   
   fill(255);
@@ -130,10 +145,12 @@ void resetGame () { //Created a function that resets the entire game!
   myEnemyShips.position.x = random (100,450);
   exploded = false;
   gameOver = false;
+  gameWon = false;
   explosionTime = 0;
   
-  myEnemyShips.velocity = new PVector (0,2); //Reset velocity when the game is reset, so it doesn't keep going faster
-  myEnemyShips.acceleration = new PVector (0,0.025); //Reset acceleration when the game is reset, so it doesn't keep going faster
+  // Changed it to .set  so it uses the already existing vectors instead of using new ones so the fps don't go down.
+  myEnemyShips.velocity.set(0,2); //Reset velocity when the game is reset, so it doesn't keep going faster
+  myEnemyShips.acceleration.set(0,0.025); //Reset acceleration when the game is reset, so it doesn't keep going faster
   
   for (Particles p: particles) {
     p.Position.x = -100;
@@ -163,6 +180,9 @@ void mousePressed () {
 void keyPressed () {
  if (key == ' ' && gameOver) {
   resetGame(); 
+ }
+ if (key == ' ' && gameWon ) {
+   resetGame();
  }
   
   
