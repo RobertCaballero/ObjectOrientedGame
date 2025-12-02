@@ -1,0 +1,28 @@
+diff a/Object_Oriented_Game/Object_Oriented_Game.pde b/Object_Oriented_Game/Object_Oriented_Game.pde	(rejected hunks)
+@@ -76,16 +76,21 @@
+     noLoop();
+   }
+ 
+- if (myEnemyShips.health == 0)
++ if (myEnemyShips.health <= 0 && !exploded)
+  {
+-   myEnemyShips.position.y = -100;
+-    myEnemyShips.position.x = random (100, 450);
+-    myEnemyShips.health = 150;
++   exploded = true;
++   
++ for (Particles p : particles) {
++   p.Position.x = myEnemyShips.position.x;
++   p.Position.y = myEnemyShips.position.y;
++   
++ }
++ 
+ 
+ }
+ 
+   if (exploded) {
+-    for (Particles p : Particles) {
++    for (Particles p : particles) {
+       p.update();
+       p.display();
+     }

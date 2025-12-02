@@ -3,14 +3,14 @@ Planet myPlanet;
 Turret myTurret;
 Crosshair myCrosshair;
 EnemyShips myEnemyShips;
-Particles myParticles;
 int lives =3;
-ArrayList <Particles> Particles;
+ArrayList <Particles> particles;
 boolean canLoseLife = true;
 boolean showLifes = false;
 boolean exploded = false;
 PImage Heart;
 PImage Heart2;
+int explosionTimer = 0;
 
 void setup() {
   size (800, 800);
@@ -21,13 +21,12 @@ void setup() {
   myTurret = new Turret();
   myCrosshair = new Crosshair ();
   myEnemyShips = new EnemyShips();
-  myParticles = new Particles ();
   Heart = loadImage("RedHeart.png");
   Heart2 = loadImage ("BlackHeart.png");
-  Particles = new ArrayList<Particles>();
+  particles = new ArrayList<Particles>();
   
   for (int i = 0; i < 50; i++) {
-    Particles.add(new Particles());
+    particles.add(new Particles());
   }
 }
 
@@ -37,15 +36,19 @@ void draw() {
   myStar.display();
   myPlanet.display();
   myTurret.display();
-  myEnemyShips.display();
-  myEnemyShips.move();
-  myEnemyShips.stopShip();
+ 
   myCrosshair.display();
   myTurret.fulllife();
   myEnemyShips.lifeBar();
   //myParticles.display();
   //myParticles.update();
 
+if (!exploded) {
+  myEnemyShips.display();
+  myEnemyShips.move();
+  myEnemyShips.stopShip(); 
+  
+}
 
   if (myEnemyShips.position.y > 540 && canLoseLife) {
     lives -=1;
@@ -95,6 +98,7 @@ void draw() {
     for (Particles p : particles) {
       p.update();
       p.display();
+      explosionTimer+=1;
     }
 
 
@@ -106,9 +110,10 @@ void draw() {
 
   void mousePressed () {
   
+    if (!exploded){
       strokeWeight(5);
       stroke(255, 0, 0);
       line (400, 650, mouseX, mouseY);
-   
-     myEnemyShips.health -=25;
+      myEnemyShips.health -=25;
+    }
   }
