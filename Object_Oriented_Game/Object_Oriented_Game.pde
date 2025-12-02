@@ -3,9 +3,8 @@ Planet myPlanet;
 Turret myTurret;
 Crosshair myCrosshair;
 EnemyShips myEnemyShips;
-Particles myParticles;
 int lives =3;
-ArrayList <Particles> Particles;
+ArrayList <Particles> particles;
 boolean canLoseLife = true;
 boolean showLifes = false;
 boolean exploded = false;
@@ -21,13 +20,12 @@ void setup() {
   myTurret = new Turret();
   myCrosshair = new Crosshair ();
   myEnemyShips = new EnemyShips();
-  myParticles = new Particles ();
   Heart = loadImage("RedHeart.png");
   Heart2 = loadImage ("BlackHeart.png");
-  Particles = new ArrayList<Particles>();
+  particles = new ArrayList<Particles>();
   
   for (int i = 0; i < 50; i++) {
-    Particles.add(new Particles());
+    particles.add(new Particles());
   }
 }
 
@@ -78,16 +76,21 @@ void draw() {
     noLoop();
   }
 
- if (myEnemyShips.health == 0)
+ if (myEnemyShips.health <= 0 && !exploded)
  {
-   myEnemyShips.position.y = -100;
-    myEnemyShips.position.x = random (100, 450);
-    myEnemyShips.health = 150;
+   exploded = true;
+   
+ for (Particles p : particles) {
+   p.Position.x = myEnemyShips.position.x;
+   p.Position.y = myEnemyShips.position.y;
+   
+ }
+ 
 
 }
 
   if (exploded) {
-    for (Particles p : Particles) {
+    for (Particles p : particles) {
       p.update();
       p.display();
     }
