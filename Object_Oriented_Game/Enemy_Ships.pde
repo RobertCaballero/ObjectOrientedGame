@@ -39,6 +39,10 @@ class EnemyShips {
     
    position.add(velocity);
    velocity.add(acceleration);    
+   
+   if (velocity.y >50) { // Implemented this so there's a speed limit, since at one point it was going way to fast, damaging the fps of the game
+    velocity.y = 50; 
+   }
     
   }
   
@@ -48,7 +52,7 @@ class EnemyShips {
     position.x = random (100, 450);
     health = 150;
     health2 = 150;
-     
+    velocity.set(0,2);
    }
   }
    
