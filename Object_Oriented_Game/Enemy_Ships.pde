@@ -1,6 +1,7 @@
 class EnemyShips {
   
   int health = 150;
+  int health2 = 150;
   PVector position;
   PVector velocity;
   PVector acceleration;
@@ -10,7 +11,7 @@ class EnemyShips {
   EnemyShips() {
     position = new PVector (0,0);
     velocity = new PVector (0,2);
-    acceleration = new PVector (0, 0.005);
+    acceleration = new PVector (0, 0.025);
     Ship = loadImage ("Ship.png");
     
   }
@@ -25,7 +26,7 @@ class EnemyShips {
   void lifeBar () {
    
     fill (50);
-    rect (position.x +100, position.y + 30, 150, 10);
+    rect (position.x +100, position.y + 30, health2, 10);
     
     fill (255,0,0);
     rect (position.x +100, position.y + 30, health, 10);
@@ -46,6 +47,7 @@ class EnemyShips {
     position.y = -100;
     position.x = random (100, 450);
     health = 150;
+    health2 = 150;
      
    }
   }
