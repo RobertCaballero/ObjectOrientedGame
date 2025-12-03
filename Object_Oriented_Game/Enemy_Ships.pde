@@ -52,7 +52,6 @@ class EnemyShips {
     position.x = random (100, 450);
     health = 150;
     health2 = 150;
-    velocity.set(0,2);
    }
   }
    
