@@ -19,35 +19,6 @@ class Turret {
     rect(290, 700, 25, 100);
     rect(485, 700, 25, 100);
   }
-  
-  void fulllife () {
-    
-    
-    //image(Heart2, 150, 720, 70, 50);
-    
-    
-  }
-  
-  void loose1life () {
-    
-    image(Heart, 20, 720, 60, 50);
-    image(Heart, 90, 720, 60, 50);
-    image(Heart2, 150, 720, 70, 50);
-    
-  }
-  
-  void loose2life () {
-    
-    
-    
-    
-  }
-  
-  void died () {
-    
-    
-    
-    
-  }
+ 
   
 }
