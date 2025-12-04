@@ -10,8 +10,8 @@ class EnemyShips {
   
   EnemyShips() {
     position = new PVector (0,0);
-    velocity = new PVector (0,2);
-    acceleration = new PVector (0, 0.025);
+    velocity = new PVector (0,0.01);
+    acceleration = new PVector (0, 0.015);
     Ship = loadImage ("Ship.png");
     
   }

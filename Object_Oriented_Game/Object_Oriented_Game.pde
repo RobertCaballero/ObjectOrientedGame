@@ -46,7 +46,6 @@ void draw() {
   myStar.display();
   myPlanet.display();
   myTurret.display();
-  myTurret.fulllife();
   myEnemyShips.lifeBar();
 
 
