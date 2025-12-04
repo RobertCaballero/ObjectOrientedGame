@@ -7,7 +7,6 @@ int lives =3; //Created Lives Variable
 int score =0; //Created Score Variable
 ArrayList <Particles> particles; //Created an Array to have more than one particle in the explosion
 boolean canLoseLife = true;
-boolean showLifes = false;
 boolean exploded = false;
 boolean gameOver = false; // New boolean to track whenever is a gameOver in the game.
 boolean gameWon = false;
