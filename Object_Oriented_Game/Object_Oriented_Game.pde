@@ -55,7 +55,7 @@ void draw() {
   }
 
 
-  if (myEnemyShips.position.y > 530 && canLoseLife) {
+  if (myEnemyShips.position.y > 530 && canLoseLife) { //One life will be reduce whenever the enemyships a certain y position
     lives -=1;
     canLoseLife = false;
   }
@@ -65,19 +65,19 @@ void draw() {
   }
 
 
-  if (lives >=1) {
+  if (lives >=1) { 
     image (Heart, 20, 720, 60, 50);
   } else image (Heart2, 20, 720, 70, 50);
 
-  if (lives >=2) {
+  if (lives >=2) { //When lifes reduce by two, it changes one of the images of the full heart to the nofilled heart, meaning a life was lost and you only have one live left
     image(Heart, 90, 720, 60, 50);
   } else image(Heart2, 90, 720, 70, 50);
 
-  if (lives >= 3) {
+  if (lives >= 3) {  //When lifes reduce by one, it changes one of the images of the full heart to the nofilled heart, meaning a life was lost and you have tow lives left
     image(Heart, 160, 720, 60, 50);
   } else image(Heart2, 160, 720, 70, 50);
 
-  if (lives <= 0) {
+  if (lives <= 0) { //When lives reach zero, boolean gameOver becomes true, showing the gameOver screen. 
     gameOver = true;
     fill (0);
     rect (0,0,800, 800);
@@ -94,13 +94,13 @@ void draw() {
     
     score +=1; // Score increases one each time the ship is destroyed
 
-    for (Particles p : particles) {
+    for (Particles p : particles) { //The particles take into account the enemy's ship position so the physics occur in the ship instead of anywhere else on the canvas. 
       p.Position.x = myEnemyShips.position.x+175;
       p.Position.y = myEnemyShips.position.y+85;
     }
   }
 
-  if (exploded) {
+  if (exploded) { //Created exploded function for the particles to show and well explode. 
     for (Particles p : particles) {
       p.update();
       p.display();
@@ -109,7 +109,7 @@ void draw() {
   }
 
 
-  if (explosionTime > 40) {
+  if (explosionTime > 40) { //After the explosionTime reaches a certain condition, the whole ships resets with a new lifebar. 
     myEnemyShips.health = 150;
     myEnemyShips.position.y = -100;
     myEnemyShips.position.x = random (100, 450);
@@ -117,7 +117,7 @@ void draw() {
     exploded = false;
   }
   
-  if ( score >= 20) {
+  if ( score >= 20) { //Whenever the score reaches 20, the boolean gameWon becomes true, showing the winning screen. 
     gameWon = true;
     fill (150);
     rect (0,0,800,800);

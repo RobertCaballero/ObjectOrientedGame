@@ -18,7 +18,7 @@ class Particles {
 
 
 
-    if (myEnemyShips.health == 0) 
+    if (myEnemyShips.health == 0) //Whenever the enemyShips lifves reach 0, particles show at a specific position. 
     {
       noStroke();
       strokeWeight(2);

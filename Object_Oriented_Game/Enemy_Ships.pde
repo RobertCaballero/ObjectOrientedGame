@@ -1,7 +1,7 @@
 class EnemyShips {
   
-  int health = 150;
-  int health2 = 150;
+  int health = 150; //Created a health variableto represent full life
+  int health2 = 150; //Created another health variable that represents the background of the life bar, so whenever health reduces, we can see it. 
   PVector position;
   PVector velocity;
   PVector acceleration;
@@ -23,7 +23,7 @@ class EnemyShips {
       
   }
   
-  void lifeBar () {
+  void lifeBar () { 
    
     fill (50);
     rect (position.x +100, position.y + 30, health2, 10);
@@ -46,7 +46,7 @@ class EnemyShips {
     
   }
   
-  void stopShip () {
+  void stopShip () { //Stops and resets the ship whenever it reaches a certain y position
    if (position.y > 550) {
     position.y = -100;
     position.x = random (100, 450);
